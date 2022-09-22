@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./index.css";
 
 import store from "@/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Couter from "./features/counter/Couter";
-import Login from "./features/auth/Login";
-import Register from "./features/auth/Register";
+import CouterPage from "@/features/counter/CouterPage";
+import LoginPage from "@/features/auth/LoginPage";
+import RegisterPage from "@/features/auth/RegisterPage";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
@@ -17,9 +16,12 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
                 <Routes>
                     <Route path="/" element={<App />}>
                         <Route index element={<div>Homepage</div>} />
-                        <Route path="counter" element={<Couter />} />
-                        <Route path="auth/login" element={<Login />} />
-                        <Route path="auth/register" element={<Register />} />
+                        <Route path="counter" element={<CouterPage />} />
+                        <Route path="auth/login" element={<LoginPage />} />
+                        <Route
+                            path="auth/register"
+                            element={<RegisterPage />}
+                        />
                     </Route>
                 </Routes>
             </BrowserRouter>

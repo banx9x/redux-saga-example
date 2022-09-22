@@ -1,4 +1,3 @@
-import { handleError } from "@/common/handleError";
 import axios from "axios";
 
 const SIGNIN_API = "https://todo-api-with-auth.herokuapp.com/api/auth/signin";

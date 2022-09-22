@@ -1,16 +1,16 @@
-import "./App.css";
-
 import { getLoggedInUser } from "@/features/auth";
 import { useAppDispatch } from "@/store/hooks";
 import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
-import User from "./components/User";
+import User from "@/components/User";
 
 function App() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(getLoggedInUser());
+        const token = localStorage.getItem("token");
+
+        if (token) dispatch(getLoggedInUser());
     }, []);
 
     return (

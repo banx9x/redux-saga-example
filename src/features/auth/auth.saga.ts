@@ -1,5 +1,7 @@
-import { createAction, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { all, call, put, takeEvery } from "redux-saga/effects";
+import { AxiosResponse } from "axios";
+
 import {
     getLoggedInUser,
     login,
@@ -15,8 +17,7 @@ import {
     signinApi,
     Signup,
     signupApi,
-} from "@/features/auth/auth.services";
-import { AxiosResponse } from "axios";
+} from "./auth.services";
 
 export const loginFlow = function* (action: PayloadAction<Signin>) {
     try {
