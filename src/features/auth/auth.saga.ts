@@ -26,7 +26,11 @@ export const loginFlow = function* (action: PayloadAction<Signin>) {
             action.payload
         );
 
-        localStorage.setItem("token", res.headers.authorization);
+        yield call(
+            [localStorage, localStorage.setItem],
+            "token",
+            res.headers.authorization
+        );
 
         yield put(setUser(res.data.data));
         yield put(setIsLoggedIn(true));
@@ -46,7 +50,11 @@ export const registerFlow = function* (action: PayloadAction<Signup>) {
             action.payload
         );
 
-        localStorage.setItem("token", res.headers.authorization);
+        yield call(
+            [localStorage, localStorage.setItem],
+            "token",
+            res.headers.authorization
+        );
 
         yield put(setUser(res.data.data));
         yield put(setIsLoggedIn(true));
@@ -60,7 +68,7 @@ export const registerWatcher = function* () {
 };
 
 export const logoutFlow = function* () {
-    localStorage.removeItem("token");
+    yield call([localStorage, localStorage.removeItem], "token");
 
     yield put(setUser(null));
     yield put(setIsLoggedIn(false));

@@ -1,7 +1,8 @@
 import { call, put } from "redux-saga/effects";
 import { assert, expect, test } from "vitest";
-import store from "store";
-import { delay, incrementSaga } from "./counter.saga";
+import store from "../../store";
+import { delay } from "./counter.saga";
+import { incrementAsyncFlow } from "./counter.saga";
 import { decrement, increment } from "./counter.slice";
 
 test("Increment", () => {
@@ -21,7 +22,7 @@ test("Decrement", () => {
 });
 
 test("Increment Saga", () => {
-    const gen = incrementSaga();
+    const gen = incrementAsyncFlow();
 
     assert.deepEqual(gen.next().value, call(delay, 1000));
 
